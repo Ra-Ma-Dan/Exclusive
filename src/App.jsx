@@ -8,6 +8,7 @@ import Login from './pages/Login'
 import SignUp from './pages/SignUp'
 import ProductCategory from './pages/ProductCategory'
 import ProductDetails from './pages/Product_Details'
+import Footer from './components/fOOTER.JSX'
 
 function App() {
 
@@ -24,7 +25,7 @@ function App() {
         <Route path='/product-info/:id' element={<ProductDetails />}/>
         <Route path='/product-category/:category' element={<ProductCategory />}/>
       </Routes>
-
+      <Footer />
       </ProductProvider>
     </>
   )

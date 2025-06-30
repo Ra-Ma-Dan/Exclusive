@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import { useState } from 'react'
 import StoreCarosel from '../components/storeCarosel'
 import ProductCard from '../components/ProductCard'
 import { useProduct } from '../contexts/productContext'
 import categories from '../components/categories'
 import { Link } from 'react-router-dom'
+import banner_10 from '../assets/images/banner10.jpg'
 
 function Home() {
     const { products } = useProduct()
@@ -13,6 +14,10 @@ function Home() {
     
     const no_of_visible_cards = 5
     
+
+    const best_selling = products.slice(1, 6)
+    const our_products = products.slice(8, 18)
+
     const visible_cards = carosels_products.slice(cardIndex, cardIndex + no_of_visible_cards)
     const visible_categories = categories.slice(cartegoryIndex, cartegoryIndex + no_of_visible_cards)
 
@@ -94,7 +99,7 @@ function Home() {
                 </div>
             </div>
             <hr />
-            <div className='px-20 py-10'>
+            <div className='px-20 mt-15 mb-25 py-10'>
                 <h3 className='before:bg-red-500 before:absolute relative before:content-[""] before:h-[150%]
                 before:w-4 before:top-[50%] before:rounded-sm before:translate-y-[-50%] before:left-[-20px]'>
                     Categories</h3>
@@ -118,17 +123,41 @@ function Home() {
                     </div>
                     
             </div>
-
+            <hr />
             <div className='px-20 py-10'>
                 <h3 className='before:bg-red-500 before:absolute relative before:content-[""] before:h-[150%]
                 before:w-4 before:top-[50%] before:rounded-sm before:translate-y-[-50%] before:left-[-20px]'>
                     This Month's</h3>
+                <div className='flex justify-between items-center'>
+                    <h2 className='text-3xl font-semibold'>Best Selling Products</h2>
+                    <button className='text-white bg-red-400 py-3 px-5 rounded-lg hover:bg-red-500 
+                    cursor-pointer delay-75 transition-all'>View all</button>
+                </div>
+                <div className='p-7 grid grid-cols-5 gap-10'>
+                    {best_selling.map((product)=>(
+                        <div key={ product.id }><ProductCard product={ product } /></div>
+                    ))}
+                </div>
+            </div>
+
+            <div className='w-full bg-[banner_10] bg-cover bg-center'>
+                
             </div>
 
             <div className='px-20 py-10'>
                 <h3 className='before:bg-red-500 before:absolute relative before:content-[""] before:h-[150%]
                 before:w-4 before:top-[50%] before:rounded-sm before:translate-y-[-50%] before:left-[-20px]'>
                     Our Products</h3>
+                <div className='flex justify-between items-center'>
+                    <h2 className='text-3xl font-semibold'>Explore Our Prroducts</h2>
+                    <button className='text-white bg-red-400 py-3 px-5 rounded-lg hover:bg-red-500 
+                    cursor-pointer delay-75 transition-all'>View all Products</button>
+                </div>
+                <div className='p-7 grid grid-cols-5 gap-10'>
+                    {our_products.map((product)=>(
+                        <div key={ product.id }><ProductCard product={ product } /></div>
+                    ))}
+                </div>
             </div>
 
             <div className='px-20 py-10'>

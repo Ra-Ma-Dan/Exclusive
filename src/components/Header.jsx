@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, Links } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 function Header() {
   return (
@@ -8,10 +8,10 @@ function Header() {
         <h1 className='text-3xl font-bold border-b-2'>Exclusive</h1>
       </div>
       <div className='flex justify-between items-center gap-25'>
-        <Link to="/"><a className='hover:border-b-2'>Home</a></Link>
-        <Link to=""><a className='hover:border-b-2'>Contact</a></Link>
-        <Link to=""><a className='hover:border-b-2'>About</a></Link>
-        <Link to=""><a className='hover:border-b-2'>Sign up</a></Link>
+        <Link to="/"><p className='hover:border-b-2'>Home</p></Link>
+        <Link to=""><p className='hover:border-b-2'>Contact</p></Link>
+        <Link to=""><p className='hover:border-b-2'>About</p></Link>
+        <Link to=""><p className='hover:border-b-2'>Sign up</p></Link>
       </div>
 
       <div className='flex justify-between items-center gap-7'>

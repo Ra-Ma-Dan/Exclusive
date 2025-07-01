@@ -10,6 +10,7 @@ function ProductDetails() {
 
     const [productImages, setProductImages] = useState([])
 
+
     useEffect(() => {
         fetchProductsInfo(id)
         console.log("Products Info Fetched and Distributed");
@@ -24,6 +25,45 @@ function ProductDetails() {
         }
         
         const imgs = [...productInfo.images]
+
+
+        if (imgs.length === 1) {
+            setProductImages([imgs[0], imgs[0], imgs[0], imgs[0]])
+        } else if (imgs.length === 2) {
+            setProductImages([imgs[0], imgs[1], imgs[0], imgs[1]])
+        } else if (imgs.length === 3) {
+            setProductImages([imgs[0], imgs[1], imgs[2], imgs[0]])
+        } else {
+            setProductImages(imgs)
+        }
+    }, [productInfo])
+
+
+    if (loading) return <p>Loading..................</p>
+
+    if (!productInfo) {
+        return (
+            <div>
+                <p className='text-6xl font-bold'>Unable to Fetch Info the Product</p>
+                <button className='text-2xl font-bold py-5 px-10'>Go back to Shop</button>
+            </div>
+        )
+    }
+
+    useEffect(() => {
+        console.log("Running  after 1");
+        console.log(productInfo);
+
+
+        if (!productInfo.images) {
+            setProductImages([])
+            console.log("No Image", productInfo);
+            return
+        }
+        console.log("From Product Info", productInfo.images);
+        const imgs = [...productInfo.images]
+        console.log("From imgs", imgs);
+        console.log("Images Fetched and Distributed");
 
 
         if (imgs.length === 1) {

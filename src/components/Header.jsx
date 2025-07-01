@@ -6,6 +6,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 
+
 function Header() {
   const { cartItemsCount } = useCart()
   const [query, setQuery] = useState('')
@@ -13,6 +14,7 @@ function Header() {
   const navigate = useNavigate()
   const [searchParams] = useSearchParams()
   const { wishListCounts } = useWishlist()
+
 
 
   useEffect(() => {
@@ -62,6 +64,7 @@ function Header() {
         <Link to="/cart"><button>
           <i class='text-2xl relative hover:text-gray-400 bx bx-cart hover:scale-115' >
             <span className='absolute text-red-500 text-lg right-[-6px] top-[-15px]'>{ cartItemsCount }</span>
+
           </i></button> </Link>
         <button><i class='text-2xl relative hover:text-gray-400 bx bx-user hover:scale-115'></i></button>
       </div>

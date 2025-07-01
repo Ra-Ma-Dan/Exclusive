@@ -16,6 +16,7 @@ import { WishlistProvider } from './contexts/wishListContext'
 import Shop from './pages/Shop'
 
 
+
 function App() {
 
   return (

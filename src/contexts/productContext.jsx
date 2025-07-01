@@ -19,7 +19,6 @@ export function ProductProvider({ children }) {
             if (!result.ok) throw new Error('HTTP Error!, Error', Error)
 
             const data = await result.json()
-            console.log("product fethed");
             const product = data.products
             setTotal(data.total)
             setProducts(product)
@@ -75,7 +74,9 @@ export function ProductProvider({ children }) {
             if (!result.ok) throw new Error('HTTP Error!, Error', Error)
 
             const data = await result.json()
+            //console.log(data);
             setProductInfo(data)
+            //console.log(productInfo);
         } catch (err) {
             console.error("Error Ocoured", err)
         } finally{
@@ -131,7 +132,7 @@ export function ProductProvider({ children }) {
         fetchProducts,
         products,
         fetchProductsInfo,
-        productInfo
+        productInfo,
     }
 
     return (

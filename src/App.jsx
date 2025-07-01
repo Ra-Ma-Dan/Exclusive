@@ -9,6 +9,9 @@ import SignUp from './pages/SignUp'
 import ProductCategory from './pages/ProductCategory'
 import ProductDetails from './pages/Product_Details'
 import Footer from './components/fOOTER.JSX'
+import SearchResult from './pages/SearchResult'
+import CartPage from './pages/Cart'
+import WishList from './pages/WishList'
 
 function App() {
 
@@ -22,7 +25,10 @@ function App() {
         <Route path='/about' element={<About />}/>
         <Route path='/login' element={<Login />}/>
         <Route path='/signup' element={<SignUp />}/>
+        <Route path='/cart' element={<CartPage />}/>
+        <Route path='/wishlist' element={<WishList />}/>
         <Route path='/product-info/:id' element={<ProductDetails />}/>
+        <Route path='/search' element={<SearchResult />}/>
         <Route path='/product-category/:category' element={<ProductCategory />}/>
       </Routes>
       <Footer />

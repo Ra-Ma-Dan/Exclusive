@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react'
 import { Link, useLocation, useNavigate, useSearchParams } from 'react-router-dom'
 import { useCart } from '../contexts/CartContext'
 import { useWishlist } from '../contexts/wishListContext'
+import React from 'react'
+import { Link } from 'react-router-dom'
 
 
 function Header() {

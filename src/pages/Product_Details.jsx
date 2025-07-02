@@ -16,19 +16,14 @@ function ProductDetails() {
     }, [id])
 
     useEffect(() => {
-        console.log("Running  after 1");
-        console.log(productInfo);
 
 
         if (!productInfo.images) {
             setProductImages([])
-            console.log("No Image", productInfo);
             return
         }
-        console.log("From Product Info", productInfo.images);
+        
         const imgs = [...productInfo.images]
-        console.log("From imgs", imgs);
-        console.log("Images Fetched and Distributed");
 
 
         if (imgs.length === 1) {

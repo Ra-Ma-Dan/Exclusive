@@ -12,16 +12,20 @@ import Footer from './components/fOOTER.JSX'
 import SearchResult from './pages/SearchResult'
 import CartPage from './pages/Cart'
 import WishList from './pages/WishList'
+import { WishlistProvider } from './contexts/wishListContext'
+import Shop from './pages/Shop'
 
 function App() {
 
   return (
     <>
       <ProductProvider>
+      <WishlistProvider>
       <UpperHeader />
       <Header />
       <Routes>
         <Route path='/' element={<Home />}/>
+        <Route path='/shop' element={<Shop />}/>
         <Route path='/about' element={<About />}/>
         <Route path='/login' element={<Login />}/>
         <Route path='/signup' element={<SignUp />}/>
@@ -32,6 +36,7 @@ function App() {
         <Route path='/product-category/:category' element={<ProductCategory />}/>
       </Routes>
       <Footer />
+      </WishlistProvider>
       </ProductProvider>
     </>
   )

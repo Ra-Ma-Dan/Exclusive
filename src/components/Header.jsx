@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link, useLocation, useNavigate, useSearchParams } from 'react-router-dom'
 import { useCart } from '../contexts/CartContext'
+import { useWishlist } from '../contexts/wishListContext'
 
 
 function Header() {
@@ -9,6 +10,7 @@ function Header() {
   const location = useLocation()
   const navigate = useNavigate()
   const [searchParams] = useSearchParams()
+  const { wishListCounts } = useWishlist()
 
 
   useEffect(() => {
@@ -34,6 +36,7 @@ function Header() {
       </div>
       <div className='flex justify-between items-center gap-25'>
         <Link to="/"><p className='hover:border-b-2'>Home</p></Link>
+        <Link to="/shop"><p className='hover:border-b-2'>Shop</p></Link>
         <Link to=""><p className='hover:border-b-2'>Contact</p></Link>
         <Link to=""><p className='hover:border-b-2'>About</p></Link>
         <Link to=""><p className='hover:border-b-2'>Sign up</p></Link>
@@ -52,11 +55,11 @@ function Header() {
         </form>
         <Link to="/wishlist"><button>
           <i class='text-2xl relative hover:text-gray-400 hover:scale-115 bx bx-heart'>
-            <span className='absolute text-lg right-[-6px] top-[-15px]'>0</span>
+            <span className='absolute text-red-600 text-lg right-[-6px] top-[-15px]'>{ wishListCounts }</span>
           </i></button></Link>
         <Link to="/cart"><button>
           <i class='text-2xl relative hover:text-gray-400 bx bx-cart hover:scale-115' >
-            <span className='absolute text-lg right-[-6px] top-[-15px]'>{ cartItemsCount }</span>
+            <span className='absolute text-red-500 text-lg right-[-6px] top-[-15px]'>{ cartItemsCount }</span>
           </i></button> </Link>
         <button><i class='text-2xl relative hover:text-gray-400 bx bx-user hover:scale-115'></i></button>
       </div>

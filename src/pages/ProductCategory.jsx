@@ -19,6 +19,7 @@ function ProductCategory() {
 
     return (
         <div className="px-20 py-10">
+            <h1 className="text-center text-4xl my-10 font-extrabold capitalize">Fetched for "{ category }" </h1>
             <div className="grid grid-cols-5 gap-10 w-full">
                 {products.map((product) => (
                     <div key={product.id}><ProductCard product={product} /></div>

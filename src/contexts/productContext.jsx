@@ -8,10 +8,11 @@ export function ProductProvider({ children }) {
     const [loading, setLoading] = useState(false)
     const [skip, setSkip] = useState(0)
     const [total, setTotal] = useState(0)
-    const limit = 30
+    const [limit, setLimit] = useState(30)
 
-
+    
     const fetchProducts = async () => {
+        setLimit(30)
         setLoading(true)
         try {
             const result = await fetch(`https://dummyjson.com/products?limit=${limit}&skip=${skip}`)
@@ -103,7 +104,7 @@ export function ProductProvider({ children }) {
             }
         }
     }
-    const nextPage = async (query) => {
+    const nextPage = async () => {
         setLoading(true)
         if (skip + limit < total) {
             setSkip(skip + limit)
@@ -133,6 +134,9 @@ export function ProductProvider({ children }) {
         products,
         fetchProductsInfo,
         productInfo,
+        limit,
+        total,
+        skip
     }
 
     return (

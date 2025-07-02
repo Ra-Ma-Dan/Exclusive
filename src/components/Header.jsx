@@ -2,8 +2,6 @@ import { useEffect, useState } from 'react'
 import { Link, useLocation, useNavigate, useSearchParams } from 'react-router-dom'
 import { useCart } from '../contexts/CartContext'
 import { useWishlist } from '../contexts/wishListContext'
-import React from 'react'
-import { Link } from 'react-router-dom'
 
 
 
@@ -15,7 +13,9 @@ function Header() {
   const [searchParams] = useSearchParams()
   const { wishListCounts } = useWishlist()
 
-
+  const togglePage = () =>{
+    
+  }
 
   useEffect(() => {
     if (location.pathname === '/search') {
@@ -39,11 +39,10 @@ function Header() {
         <h1 className='text-3xl font-bold border-b-2'>Exclusive</h1>
       </div>
       <div className='flex justify-between items-center gap-25'>
-        <Link to="/"><p className='hover:border-b-2'>Home</p></Link>
-        <Link to="/shop"><p className='hover:border-b-2'>Shop</p></Link>
-        <Link to=""><p className='hover:border-b-2'>Contact</p></Link>
-        <Link to=""><p className='hover:border-b-2'>About</p></Link>
-        <Link to=""><p className='hover:border-b-2'>Sign up</p></Link>
+        <Link to="/"><p className={`p-2 hover:border-2 ${location.pathname === '/' ? 'border-2' : 'border-transparent'}`}>Home</p></Link>
+        <Link to="/shop"><p className={`p-2 hover:border-2 ${location.pathname === '/shop' ? 'border-2' : 'border-transparent'}`}>Shop</p></Link>
+        <Link to="/contact"><p className={`p-2 hover:border-2 ${location.pathname === '/contact' ? 'border-2' : 'border-transparent'}`}>Contact</p></Link>
+        <Link to="/about"><p className={`p-2 hover:border-2 ${location.pathname === '/about' ? 'border-2' : 'border-transparent'}`}>About</p></Link>
       </div>
 
       <div className='flex justify-between items-center gap-7'>
@@ -58,15 +57,15 @@ function Header() {
           </div>
         </form>
         <Link to="/wishlist"><button>
-          <i class='text-2xl relative hover:text-gray-400 hover:scale-115 bx bx-heart'>
+          <i class='text-2xl relative cursor-pointer hover:text-gray-400 hover:scale-115 bx bx-heart'>
             <span className='absolute text-red-600 text-lg right-[-6px] top-[-15px]'>{ wishListCounts }</span>
           </i></button></Link>
         <Link to="/cart"><button>
-          <i class='text-2xl relative hover:text-gray-400 bx bx-cart hover:scale-115' >
+          <i class='text-2xl relative cursor-pointer hover:text-gray-400 bx bx-cart hover:scale-115' >
             <span className='absolute text-red-500 text-lg right-[-6px] top-[-15px]'>{ cartItemsCount }</span>
 
           </i></button> </Link>
-        <button><i class='text-2xl relative hover:text-gray-400 bx bx-user hover:scale-115'></i></button>
+        <button><i class='text-2xl relative cursor-pointer hover:text-gray-400 bx bx-user hover:scale-115'></i></button>
       </div>
     </nav>
   )

@@ -14,7 +14,9 @@ import CartPage from './pages/Cart'
 import WishList from './pages/WishList'
 import { WishlistProvider } from './contexts/wishListContext'
 import Shop from './pages/Shop'
-
+import Contact from './pages/Contact'
+import Account from './pages/Account'
+import PaymentPage from './pages/Payment'
 
 
 function App() {
@@ -29,6 +31,9 @@ function App() {
         <Route path='/' element={<Home />}/>
         <Route path='/shop' element={<Shop />}/>
         <Route path='/about' element={<About />}/>
+        <Route path='/contact' element={<Contact />}/>
+        <Route path='/acount-info' element={<Account />}/>
+        <Route path='/payment' element={<PaymentPage />}/>
         <Route path='/login' element={<Login />}/>
         <Route path='/signup' element={<SignUp />}/>
         <Route path='/cart' element={<CartPage />}/>

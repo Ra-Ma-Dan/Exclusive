@@ -4,16 +4,15 @@ import ProductCard from '../components/ProductCard'
 import { useProduct } from '../contexts/productContext'
 import categories from '../components/categories'
 import { Link } from 'react-router-dom'
-import banner_10 from '../assets/images/banner10.jpg'
 
 function Home() {
-    const { products } = useProduct()
+    const { products, loading } = useProduct()
     const carosels_products = products.slice(20, 31)
     const [cardIndex, setCardIndex] = useState(0)
     const [cartegoryIndex, setCartegoryIndex] = useState(0)
-    
+
     const no_of_visible_cards = 5
-    
+
 
     const best_selling = products.slice(1, 6)
     const our_products = products.slice(8, 18)
@@ -83,45 +82,47 @@ function Home() {
                     </div>
                 </div>
             </div>
-            <div className='px-25'>
-                <div>
-                    <div className="flex gap-10 w-full">
-                        {visible_cards.map((product) => (
-                            <div key={product.id}><ProductCard product={product} /></div>
-                        ))}
-                    </div>
-                    <div className='w-full flex justify-center m-10'>
-                        <button className='m-3 cursor-pointer hover:bg-red-400 px-25 rounded-lg font-sans py-5
+            {loading ? <p className='text-center text-3xl '> Loading...... </p> :
+                <div className='px-25'>
+                    <div>
+                        <div className="flex gap-10 w-full">
+                            {visible_cards.map((product) => (
+                                <div key={product.id}><ProductCard product={product} /></div>
+                            ))}
+                        </div>
+                        <div className='w-full flex justify-center m-10'>
+                            <button className='m-3 cursor-pointer hover:bg-red-400 px-25 rounded-lg font-sans py-5
                         font-bold bg-red-500'>
-                            View All Products
-                        </button>
+                                View All Products
+                            </button>
+                        </div>
                     </div>
                 </div>
-            </div>
+            }
             <hr />
             <div className='px-20 mt-15 mb-25 py-10'>
                 <h3 className='before:bg-red-500 before:absolute relative before:content-[""] before:h-[150%]
                 before:w-4 before:top-[50%] before:rounded-sm before:translate-y-[-50%] before:left-[-20px]'>
                     Categories</h3>
-                    <div className='flex justify-between items-center'>
-                        <h1 className='text-4xl font-semibold'>Browse By Category</h1>
-                        <div className='flex gap-20'>
-                            <button onClick={()=>{ handlePrev() }} className='bg-gray-200 p-3 font-extrabold
+                <div className='flex justify-between items-center'>
+                    <h1 className='text-4xl font-semibold'>Browse By Category</h1>
+                    <div className='flex gap-20'>
+                        <button onClick={() => { handlePrev() }} className='bg-gray-200 p-3 font-extrabold
                              hover:bg-gray-300 cursor-pointer rounded-full'>&lt;&lt;</button>
-                            <button onClick={()=>{ handleNext()}} className='bg-gray-200 p-3 font-extrabold
+                        <button onClick={() => { handleNext() }} className='bg-gray-200 p-3 font-extrabold
                              hover:bg-gray-300 cursor-pointer rounded-full'>&gt;&gt;</button>
-                        </div>
                     </div>
-                    <div className="gap-20 mt-10 w-full grid grid-cols-5">
-                        {visible_categories.map((query) => (
-                            <Link to={`/product-category/${query.category}`} key={query.id}><div className='border-2 cursor-pointer hover:scale-[1.02] delay-75 py-10 rounded-2xl flex flex-col 
+                </div>
+                <div className="gap-20 mt-10 w-full grid grid-cols-5">
+                    {visible_categories.map((query) => (
+                        <Link to={`/product-category/${query.category}`} key={query.id}><div className='border-2 cursor-pointer hover:scale-[1.02] delay-75 py-10 rounded-2xl flex flex-col 
                             justify-center transition-all ease-linear gap-3 items-center' >
-                                <i className={`${query.class} text-6xl`}></i>
-                                <h2 className='text-2xl'>{ query.name }</h2>
-                            </div></Link>
-                        ))}
-                    </div>
-                    
+                            <i className={`${query.class} text-6xl`}></i>
+                            <h2 className='text-2xl'>{query.name}</h2>
+                        </div></Link>
+                    ))}
+                </div>
+
             </div>
             <hr />
             <div className='px-20 py-10'>
@@ -133,15 +134,17 @@ function Home() {
                     <button className='text-white bg-red-400 py-3 px-5 rounded-lg hover:bg-red-500 
                     cursor-pointer delay-75 transition-all'>View all</button>
                 </div>
-                <div className='p-7 grid grid-cols-5 gap-10'>
-                    {best_selling.map((product)=>(
-                        <div key={ product.id }><ProductCard product={ product } /></div>
-                    ))}
-                </div>
+                {loading ? <p className='text-center text-3xl'>Loading...........</p> :
+                    <div className='p-7 grid grid-cols-5 gap-10'>
+                        {best_selling.map((product) => (
+                            <div key={product.id}><ProductCard product={product} /></div>
+                        ))}
+                    </div>
+                }
             </div>
 
             <div className='w-full bg-[banner_10] bg-cover bg-center'>
-                
+
             </div>
 
             <div className='px-20 py-10'>
@@ -153,11 +156,13 @@ function Home() {
                     <button className='text-white bg-red-400 py-3 px-5 rounded-lg hover:bg-red-500 
                     cursor-pointer delay-75 transition-all'>View all Products</button>
                 </div>
-                <div className='p-7 grid grid-cols-5 gap-10'>
-                    {our_products.map((product)=>(
-                        <div key={ product.id }><ProductCard product={ product } /></div>
-                    ))}
-                </div>
+                {loading ? <p className='text-center text-3xl'>Loading.......</p> :
+                    <div className='p-7 grid grid-cols-5 gap-10'>
+                        {our_products.map((product) => (
+                            <div key={product.id}><ProductCard product={product} /></div>
+                        ))}
+                    </div>
+                }
             </div>
 
             <div className='px-20 py-10'>

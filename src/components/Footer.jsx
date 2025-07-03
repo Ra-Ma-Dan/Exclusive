@@ -52,7 +52,7 @@ function Footer() {
                     </div>
                 </div>
             </div>
-            <p className='my-3 text-center text-white'>Copyright Exclusive 2025 || All Right Reserved</p>
+            <p className='my-3 text-center text-white'>Copyright Exclusive 2025 || All Right Reserved || By Ra_Ma_Dan</p>
         </footer>
     )
 }

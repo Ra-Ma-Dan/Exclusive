@@ -1,5 +1,7 @@
 import usmanu1 from '../assets/images/usmanu1.jpg'
 import usmanu2 from '../assets/images/usmanu2.png'
+import group1 from '../assets/images/group1.jpg'
+import group2 from '../assets/images/group2.jpg'
 
 function About() {
   return (
@@ -26,7 +28,7 @@ function About() {
       <div>
         <h1 className='text-center text-4xl mb-5 mt-25 font-bold'>Meet the TEAM</h1>
         <p className='text-lg'>Behind every great brand is a passionate team. From sourcing to shipping, our dedicated professionals work hard to bring you the best.</p>
-        <div><img src={ usmanu2 } alt="" /></div>
+        <div><img className='w-full' src={ group2 } alt="" /></div>
       </div>
       
       <div>
